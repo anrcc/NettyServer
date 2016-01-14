@@ -43,6 +43,7 @@ public class NettyServer {
 
 			
 			})
+			
 			.option(ChannelOption.SO_BACKLOG, 128)
 			.childOption(ChannelOption.SO_KEEPALIVE, true);
 			
@@ -63,7 +64,7 @@ public class NettyServer {
 	
 	public static void main(String[] args) {
 		try {
-			new NettyServer(8080).run();
+			new NettyServer(58888).run();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
