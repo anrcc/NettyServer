@@ -23,7 +23,8 @@ public class NettyServer {
             b.childHandler(new ChannelInitializer<SocketChannel>() {//有连接到达时会创建一个channel  
                         protected void initChannel(SocketChannel ch) throws Exception {  
                             // pipeline管理channel中的Handler，在channel队列中添加一个handler来处理业务  
-                            ch.pipeline().addLast("myHandler", new MyServerHandler());  
+                            ch.pipeline().addLast("myInHandler", new MyServerInboundHandler());  
+                            ch.pipeline().addLast("myOutHandler", new MyServerOutboundHandler());  
                         }  
                     });  
             ChannelFuture f = b.bind().sync();// 配置完成，开始绑定server，通过调用sync同步方法阻塞直到绑定成功  
